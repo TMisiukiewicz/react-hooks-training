@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 
 interface EnumList {
     name: string;
@@ -7,18 +7,18 @@ interface EnumList {
 
 interface Props {
     list: Array<EnumList>;
+    onStatusChange?: any;
 };
 
 export default function TaskList(props: Props) {
-    const { list } = props;
-    // const [tasks, setTasks] = useState(list);
+    const { list, onStatusChange } = props;
 
     return (
         <ul className="list">
-            {list.map((item) => {
-                return <li key={item.name}>
+            {list.map((item, index) => {
+                return <li key={item.name} className={item.done === 1 ? 'task-done' : ''}>
                     {item.name}
-                    <button className={item.done === 1 ? "done-button done" : "done-button"}></button>
+                    <button className={item.done === 1 ? "done-button done" : "done-button"} onClick={() => onStatusChange(index)}></button>
                 </li>
             })}
         </ul>

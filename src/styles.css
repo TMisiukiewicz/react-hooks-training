@@ -38,6 +38,9 @@ body {
   border: 1px solid #70C1B3;
   margin-bottom: 10px;
 }
+.list li.task-done {
+  text-decoration: line-through;
+}
 .list li .done-button {
   width: 20px;
   height: 20px;
@@ -47,6 +50,16 @@ body {
   margin-top: 3px;
   border: 1px solid #70C1B3;
 }
+.list li .done-button.done {
+  background: #70C1B3;
+}
+.list li .done-button.done::before {
+  content: 'v';
+  color: white;
+}
 .list li .done-button:focus {
   outline: none;
+}
+.list li .done-button:hover {
+  cursor: pointer;
 }
